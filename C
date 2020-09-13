@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(void) {
+	char vocales[] = { 'a','e','i','o','u' };
+	char consonantes[] = { 'B','C','D','F','G','H','J','K','L','M','N','P','Q','R','S','T','V','W','X','Y','Z' };
+	int password[64];
+	srand(time(NULL));
+	int cantidad = 0;
+
+	while (cantidad < 8 || cantidad > 64) {
+		printf("Ingrese numero de digitos para la contrasena: ");
+		scanf("%d", &cantidad);
+	}
+	cantidad = cantidad - 3;
+	for (int i = 0; i < cantidad;i++) {
+		if (i % 2 == 0) {
+			password[i] = vocales[(rand() % (5))];
+		}
+		else {
+			password[i] = consonantes[(rand() % (21))];
+		}
+		printf("%c", password[i]);
+	}
+	printf("%c", (rand() % (57 - 48)) + 48);
+	printf("%c", (rand() % (57 - 48)) + 48);
+	printf("%c", (rand() % (47 - 37)) + 37);
+	return 0;
+}
